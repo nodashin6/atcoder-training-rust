@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = ["lib", "problem/*/*/*/*/*/*"]
+
+[workspace.dependencies]
+proconio = "0.5"
+num-bigint = "0.4"
+num-traits = "0.2"
+ac-lib = { path = "lib" }
