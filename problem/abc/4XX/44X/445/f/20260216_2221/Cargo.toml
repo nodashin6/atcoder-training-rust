@@ -1,0 +1,13 @@
+[package]
+name = "abc445-f-20260216_2221"
+edition = "2021"
+
+[[bin]]
+name = "abc445-f-20260216_2221"
+path = "main.rs"
+
+[dependencies]
+proconio.workspace = true
+num-bigint.workspace = true
+num-traits.workspace = true
+ac-lib.workspace = true
