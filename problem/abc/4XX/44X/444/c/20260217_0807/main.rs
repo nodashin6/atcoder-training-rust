@@ -1,11 +1,10 @@
 use proconio::input;
 
 fn is_ok(a: &[usize], target: &usize) -> bool {
-    let mut b: Vec<_> = a.iter().filter(|&x| x < target).collect();
+    let b: Vec<_> = a.iter().filter(|&x| x < target).collect();
     if b.len() % 2 > 0 {
         return false;
     }
-    b.sort();
     for i in 0..(b.len() / 2) {
         let j = b.len() - 1 - i;
         if (b[i] + b[j]) != *target {
@@ -18,12 +17,14 @@ fn is_ok(a: &[usize], target: &usize) -> bool {
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        mut a: [usize; n],
     }
+    a.sort();
     let s: usize = a.iter().sum();
     let max_a = *a.iter().max().unwrap();
+    let max_i = (s / max_a) + 1;
     let mut ans = vec![];
-    for i in 1..(n + 1) {
+    for i in (1..(max_i + 1)).rev() {
         if s % i > 0 {
             continue;
         }
