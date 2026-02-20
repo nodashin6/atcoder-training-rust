@@ -33,6 +33,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc444-d-20260220_0007"
+version = "0.0.0"
+dependencies = [
+ "ac-lib",
+ "num-bigint",
+ "num-traits",
+ "proconio",
+]
+
+[[package]]
 name = "abc445-a-20260215_1346"
 version = "0.0.0"
 dependencies = [
