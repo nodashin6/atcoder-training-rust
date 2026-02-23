@@ -21,31 +21,11 @@ NAME="${TYPE}${NUMBER}-${PROBLEM}-${TIMESTAMP}"
 mkdir -p "${DIR}"
 
 # Cargo.toml
-cat > "${DIR}/Cargo.toml" <<EOF
-[package]
-name = "${NAME}"
-edition = "2021"
-
-[[bin]]
-name = "${NAME}"
-path = "main.rs"
-
-[dependencies]
-proconio.workspace = true
-num-bigint.workspace = true
-num-traits.workspace = true
-ac-lib.workspace = true
-EOF
+SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+sed -e "s/{{NAME}}/${NAME}/g" "${SCRIPT_DIR}/Cargo.toml.template" > "${DIR}/Cargo.toml"
 
 # main.rs
-cat > "${DIR}/main.rs" <<EOF
-use proconio::input;
-
-fn main() {
-    input! {
-    }
-}
-EOF
+cp "${SCRIPT_DIR}/main.rs" "${DIR}/main.rs"
 
 echo "Created: ${DIR}"
 echo "Run:     cargo run -p ${NAME}"

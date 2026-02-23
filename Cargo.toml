@@ -6,4 +6,5 @@ members = ["lib", "lib/tree", "problem/*/*/*/*/*/*"]
 proconio = "0.5"
 num-bigint = "0.4"
 num-traits = "0.2"
+itertools = "0.3"
 ac-lib = { path = "lib" }
