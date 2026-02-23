@@ -101,6 +101,62 @@ fn lower_upper_bound() {
 }
 
 #[test]
+fn get_existing_and_missing() {
+    let mut t = sum_treap();
+    t.insert(1, 10);
+    t.insert(3, 30);
+    t.insert(5, 50);
+    assert_eq!(t.get(1), Some(&10));
+    assert_eq!(t.get(3), Some(&30));
+    assert_eq!(t.get(5), Some(&50));
+    assert_eq!(t.get(0), None);
+    assert_eq!(t.get(2), None);
+    assert_eq!(t.get(6), None);
+}
+
+#[test]
+fn get_empty_treap() {
+    let t = sum_treap();
+    assert_eq!(t.get(0), None);
+}
+
+#[test]
+fn update_existing_key() {
+    let mut t = sum_treap();
+    t.insert(1, 10);
+    t.insert(3, 30);
+    t.insert(5, 50);
+    assert!(t.update(3, 99));
+    assert_eq!(t.get(3), Some(&99));
+    assert_eq!(t.prod(1, 6), 10 + 99 + 50);
+    assert_eq!(t.len(), 3);
+}
+
+#[test]
+fn update_missing_key() {
+    let mut t = sum_treap();
+    t.insert(1, 10);
+    assert!(!t.update(2, 20));
+    assert_eq!(t.get(2), None);
+    assert_eq!(t.len(), 1);
+}
+
+#[test]
+fn update_preserves_prod() {
+    let mut t = sum_treap();
+    for i in 0..10 {
+        t.insert(i, i as i64);
+    }
+    // sum of [0, 10) = 0+1+...+9 = 45
+    assert_eq!(t.prod(0, 10), 45);
+    t.update(5, 100);
+    // 45 - 5 + 100 = 140
+    assert_eq!(t.prod(0, 10), 140);
+    assert_eq!(t.prod(5, 6), 100);
+    assert_eq!(t.prod(0, 5), 10); // 0+1+2+3+4
+}
+
+#[test]
 fn key_min_max() {
     let mut t = sum_treap();
     assert_eq!(t.key_min(), None);

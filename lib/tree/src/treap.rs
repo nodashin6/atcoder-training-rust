@@ -177,6 +177,32 @@ fn tp_min_left<K: Ord + Clone, V: Clone>(
     }
 }
 
+fn tp_set_val<K: Ord, V: Clone>(
+    node: &mut Option<Box<TreapNode<K, V>>>,
+    key: &K,
+    val: V,
+    op: fn(&V, &V) -> V,
+    e: &V,
+) -> bool {
+    match node {
+        None => false,
+        Some(n) => {
+            let found = match key.cmp(&n.key) {
+                Ordering::Less => tp_set_val(&mut n.left, key, val, op, e),
+                Ordering::Equal => {
+                    n.val = val;
+                    true
+                }
+                Ordering::Greater => tp_set_val(&mut n.right, key, val, op, e),
+            };
+            if found {
+                tp_update(n, op, e);
+            }
+            found
+        }
+    }
+}
+
 fn tp_kth<K, V: Clone>(node: &Option<Box<TreapNode<K, V>>>, k: usize) -> Option<(&K, &V)> {
     let n = node.as_ref()?;
     let lc = tp_cnt(&n.left);
@@ -206,6 +232,24 @@ impl<K: Ord, V: Clone> Treap<K, V> {
 
     pub fn len(&self) -> usize {
         tp_cnt(&self.root)
+    }
+
+    /// Get a reference to the value for the given key.
+    pub fn get(&self, key: K) -> Option<&V> {
+        let mut cur = &self.root;
+        while let Some(n) = cur {
+            match key.cmp(&n.key) {
+                Ordering::Less => cur = &n.left,
+                Ordering::Equal => return Some(&n.val),
+                Ordering::Greater => cur = &n.right,
+            }
+        }
+        None
+    }
+
+    /// Update the value for an existing key. Returns true if found.
+    pub fn update(&mut self, key: K, val: V) -> bool {
+        tp_set_val(&mut self.root, &key, val, self.op, &self.e)
     }
 
     /// Insert (key, val). If key already exists, overwrite val.
