@@ -1,0 +1,20 @@
+[package]
+name = "ac-tree"
+edition = "2021"
+version = "0.1.0"
+
+[[test]]
+name = "treap_basic_ops"
+path = "tests/treap/basic_ops.rs"
+
+[[test]]
+name = "treap_prod"
+path = "tests/treap/prod.rs"
+
+[[test]]
+name = "treap_max_right"
+path = "tests/treap/max_right.rs"
+
+[[test]]
+name = "treap_min_left"
+path = "tests/treap/min_left.rs"

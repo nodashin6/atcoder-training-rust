@@ -1,4 +1,4 @@
-struct Segtree<T: Clone> {
+pub struct Segtree<T: Clone> {
     n: usize,
     op: fn(&T, &T) -> T,
     e: T,
@@ -6,7 +6,7 @@ struct Segtree<T: Clone> {
 }
 
 impl<T: Clone> Segtree<T> {
-    fn new(n: usize, op: fn(&T, &T) -> T, e: T, a: Vec<T>) -> Self {
+    pub fn new(n: usize, op: fn(&T, &T) -> T, e: T, a: Vec<T>) -> Self {
         let n_new = n.next_power_of_two();
         let a_new = vec![e.clone(); n_new * 2];
         let mut segtree = Segtree {
@@ -21,7 +21,7 @@ impl<T: Clone> Segtree<T> {
         segtree
     }
 
-    fn set(&mut self, p: usize, x: T) {
+    pub fn set(&mut self, p: usize, x: T) {
         let mut p = p + self.n;
         self.a[p] = x;
         while p > 1 {
@@ -30,11 +30,11 @@ impl<T: Clone> Segtree<T> {
         }
     }
 
-    fn get(&self, p: usize) -> T {
+    pub fn get(&self, p: usize) -> T {
         self.a[p + self.n].clone()
     }
 
-    fn prod(&self, l: usize, r: usize) -> T {
+    pub fn prod(&self, l: usize, r: usize) -> T {
         let mut l = l + self.n;
         let mut r = r + self.n;
         let mut sml = self.e.clone();
@@ -54,7 +54,7 @@ impl<T: Clone> Segtree<T> {
         (self.op)(&sml, &smr)
     }
 
-    fn min_left<F: Fn(T) -> bool>(&self, l: usize, f: F) -> usize {
+    pub fn min_left<F: Fn(T) -> bool>(&self, l: usize, f: F) -> usize {
         if l == self.n {
             return self.n;
         }
@@ -83,7 +83,7 @@ impl<T: Clone> Segtree<T> {
         return self.n;
     }
 
-    fn max_right<F: Fn(T) -> bool>(&self, r: usize, f: F) -> usize {
+    pub fn max_right<F: Fn(T) -> bool>(&self, r: usize, f: F) -> usize {
         if r == 0 {
             return 0;
         }

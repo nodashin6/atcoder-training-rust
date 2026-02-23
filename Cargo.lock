@@ -43,6 +43,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc444-e-20260221_0040"
+version = "0.0.0"
+dependencies = [
+ "ac-lib",
+ "num-bigint",
+ "num-traits",
+ "proconio",
+]
+
+[[package]]
+name = "abc444-f-20260221_2029"
+version = "0.0.0"
+dependencies = [
+ "ac-lib",
+ "num-bigint",
+ "num-traits",
+ "proconio",
+]
+
+[[package]]
 name = "abc445-a-20260215_1346"
 version = "0.0.0"
 dependencies = [
@@ -104,6 +124,10 @@ dependencies = [
 
 [[package]]
 name = "ac-lib"
+version = "0.1.0"
+
+[[package]]
+name = "ac-tree"
 version = "0.1.0"
 
 [[package]]

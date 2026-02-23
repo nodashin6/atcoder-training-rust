@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["lib", "problem/*/*/*/*/*/*"]
+members = ["lib", "lib/tree", "problem/*/*/*/*/*/*"]
 
 [workspace.dependencies]
 proconio = "0.5"
