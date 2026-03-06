@@ -18,3 +18,7 @@ path = "tests/treap/max_right.rs"
 [[test]]
 name = "treap_min_left"
 path = "tests/treap/min_left.rs"
+
+[[test]]
+name = "binary_indexed_tree"
+path = "tests/binary_indexed_tree.rs"

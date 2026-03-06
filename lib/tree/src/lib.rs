@@ -1,3 +1,4 @@
+pub mod binary_indexed_tree;
 pub mod segment_tree;
 pub mod treap;
 pub mod treap_list;
