@@ -1,0 +1,45 @@
+[package]
+name = "abc440-d-20260308_1748"
+edition = "2021"
+
+[[bin]]
+name = "abc440-d-20260308_1748"
+path = "main.rs"
+
+[dependencies]
+proconio.workspace = true
+num-bigint.workspace = true
+num-traits.workspace = true
+num-integer.workspace = true
+num-rational.workspace = true
+num-complex.workspace = true
+num-derive.workspace = true
+itertools.workspace = true
+rustc-hash.workspace = true
+superslice.workspace = true
+ordered-float.workspace = true
+petgraph.workspace = true
+indexmap.workspace = true
+rand.workspace = true
+rand_chacha.workspace = true
+regex.workspace = true
+ndarray.workspace = true
+permutohedron.workspace = true
+bitvec.workspace = true
+smallvec.workspace = true
+ac-library-rs.workspace = true
+once_cell.workspace = true
+lazy_static.workspace = true
+ascii.workspace = true
+fixedbitset.workspace = true
+either.workspace = true
+im-rc.workspace = true
+counter.workspace = true
+hashbag.workspace = true
+multimap.workspace = true
+pathfinding.workspace = true
+bstr.workspace = true
+az.workspace = true
+tap.workspace = true
+easy-ext.workspace = true
+ac-lib.workspace = true
